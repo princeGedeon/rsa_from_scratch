@@ -29,6 +29,35 @@ class BitArray:
 
     def estPair(self):
         return True if self.bits[-1] == '0' else False
+
+    def diviserPar2(self):
+        """
+        Divise le nombre représenté par le tableau de bits par 2.
+        En supprimant le dernier bit.
+        """
+        self.bits.pop()  # Supprime le dernier bit
+        self.bits.insert(0, '0')  # Ajoute un '0' au début pour garder la taille constante
+
+    def reduireDe1(self):
+        """
+        Réduit le nombre représenté par le tableau de bits de 1.
+        """
+        value = self.to_int()  # Convertit en entier
+        if value > 0:
+            self.set_from_int(value - 1)  # Réduit de 1 et met à jour les bits
+        else:
+            raise ValueError("Le nombre est déjà à zéro, impossible de le réduire plus.")
+
+    def multiplierPar2(self):
+
+        self.size+=1
+        if len(self.bits) < self.size:
+            self.bits.append('0')  # Ajoute un '0' à la fin
+
+        else:
+            raise ValueError("Impossible de multiplier par 2, la taille maximale est atteinte.")
+
+
     def __repr__(self):
 
         return ''.join(self.bits)
@@ -38,4 +67,10 @@ class BitArray:
 bit_array = BitArray(10)
 bit_array.set_from_int(18)
 print(bit_array)
-print(bit_array.estPair())
+bit_array.diviserPar2()
+print(bit_array)
+bit_array.reduireDe1()
+print(bit_array)
+bit_array.multiplierPar2()
+print(bit_array)
+
